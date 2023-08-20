@@ -5,6 +5,7 @@ check:
 	COMPOSER_MEMORY_LIMIT=-1 composer deptrac
 fix:
 	COMPOSER_MEMORY_LIMIT=-1 composer phpcbf
+	COMPOSER_MEMORY_LIMIT=-1 composer rector
 analyze:
 	COMPOSER_MEMORY_LIMIT=-1 composer phpstan
 test:
