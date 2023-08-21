@@ -1,0 +1,36 @@
+_id: req_wrk_44747ddeeadc4bb494f6c1061f8f94e100ac9da2
+type: Request
+parentId: fld_wrk_44747ddeeadc4bb494f6c1061f8f94e112dea96f
+modified: 1692640885162
+created: 1692639704097
+url: "{{ base_url }}/user/login"
+name: Logs user into the system
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"email": "se@sergeyem.ru",
+    	"password": "1qaz2wsx",
+    	"token_name": "Insomnia"
+    }
+parameters: []
+headers:
+  - name: Accept
+    value: application/json
+    id: pair_15799aae510f4fa6a304c8cb56c738ef
+    description: ""
+  - id: pair_c735fb7ffa4949f3b0aad8ad7761bb59
+    name: Content-Type
+    value: application/json
+    description: ""
+authentication: {}
+metaSortKey: -1692639704097
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

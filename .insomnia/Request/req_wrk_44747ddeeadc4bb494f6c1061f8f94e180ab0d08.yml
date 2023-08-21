@@ -1,0 +1,24 @@
+_id: req_wrk_44747ddeeadc4bb494f6c1061f8f94e180ab0d08
+type: Request
+parentId: wrk_44747ddeeadc4bb494f6c1061f8f94e1
+modified: 1692639704118
+created: 1692639704118
+url: "{{ base_url }}/pet/findByStatus"
+name: Finds Pets by status
+description: ""
+method: GET
+body: {}
+parameters:
+  - name: status
+    disabled: false
+    value: available
+headers: []
+authentication: {}
+metaSortKey: -1692639704118
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

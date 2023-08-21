@@ -1,0 +1,19 @@
+_id: env_env_b9cd7d8b790a9e6f4f9b9927bd8dae8af20df52d_sub
+type: Environment
+parentId: env_b9cd7d8b790a9e6f4f9b9927bd8dae8af20df52d
+modified: 1692640037514
+created: 1692639704137
+name: OpenAPI env
+data:
+  scheme: https
+  base_path: /api/v1
+  host: docs.sergeyem.ru
+  bearerToken: bearerToken
+dataPropertyOrder:
+  "&":
+    - scheme
+    - base_path
+    - host
+color: null
+isPrivate: false
+metaSortKey: 1692639704137

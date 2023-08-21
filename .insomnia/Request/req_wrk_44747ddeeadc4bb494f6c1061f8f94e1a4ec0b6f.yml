@@ -1,0 +1,32 @@
+_id: req_wrk_44747ddeeadc4bb494f6c1061f8f94e1a4ec0b6f
+type: Request
+parentId: fld_wrk_44747ddeeadc4bb494f6c1061f8f94e112dea96f
+modified: 1692640922099
+created: 1692639704094
+url: "{{ base_url }}/user/me"
+name: Get current user
+description: ""
+method: GET
+body: {}
+parameters: []
+headers:
+  - id: pair_402eadcfa81d4489a36927c8ff72bf0d
+    name: Accept
+    value: application/json
+    description: ""
+  - id: pair_37e52db9d02b4397a77a39bcb4de66f1
+    name: Content-Type
+    value: application/json
+    description: ""
+authentication:
+  type: bearer
+  token: "{{bearerToken}}"
+  prefix: ""
+metaSortKey: -1692639704094
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
