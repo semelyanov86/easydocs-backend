@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\GroupResource\Pages;
+use App\Filament\Resources\GroupResource\RelationManagers\UsersRelationManager;
 use App\Models\Group;
-use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -21,6 +21,8 @@ final class GroupResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -29,14 +31,6 @@ final class GroupResource extends Resource
                     ->required(),
 
                 TextInput::make('description'),
-
-                Placeholder::make('created_at')
-                    ->label('Created Date')
-                    ->content(fn (?Group $record): string => $record?->created_at?->diffForHumans() ?? '-'),
-
-                Placeholder::make('updated_at')
-                    ->label('Last Modified Date')
-                    ->content(fn (?Group $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
             ]);
     }
 
@@ -64,5 +58,15 @@ final class GroupResource extends Resource
     public static function getGloballySearchableAttributes(): array
     {
         return ['name'];
+    }
+
+    /**
+     * @return string[]
+     */
+    public static function getRelations(): array
+    {
+        return [
+            UsersRelationManager::class,
+        ];
     }
 }

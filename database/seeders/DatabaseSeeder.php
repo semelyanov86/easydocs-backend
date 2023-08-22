@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Group;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,10 +15,19 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
+        $group = Group::create([
+            'name' => 'Main',
+            'description' => 'Main documents group',
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $user = \App\Models\User::factory()->create([
+            'name' => 'Sergey Emelyanov',
+            'email' => 'se@sergeyem.ru',
+            'password' => Hash::make('password'),
+            'group_id' => $group->id,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        $user->assignRole(['super_admin', 'filament_user']);
     }
 }
