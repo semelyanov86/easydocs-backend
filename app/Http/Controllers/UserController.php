@@ -5,12 +5,15 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Actions\Users\LogoutUserAction;
+use App\Actions\Users\UpdateUserAction;
+use App\DTO\UserData;
 use App\Http\Requests\UserLoginRequest;
 use App\Transformers\TokenTransformer;
 use App\Transformers\UsersTransformer;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 final class UserController extends Controller
 {
@@ -46,5 +49,17 @@ final class UserController extends Controller
     public function me(Request $request): JsonResponse
     {
         return fractal($request->user(), new UsersTransformer())->respond();
+    }
+
+    public function update(UserData $data, UpdateUserAction $action): JsonResponse
+    {
+        $user = \request()->user();
+        if (! $user) {
+            abort(403);
+        }
+        $data->id = $user->id;
+        $user = $action->handle($data);
+
+        return fractal($user, new UsersTransformer())->respond(Response::HTTP_ACCEPTED);
     }
 }

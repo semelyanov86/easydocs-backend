@@ -1,5 +1,21 @@
 <?php
 
+namespace App\Actions\Files;
+
+/**
+ * @method static \Lorisleiva\Actions\Decorators\JobDecorator|\Lorisleiva\Actions\Decorators\UniqueJobDecorator makeJob(string $image_64, string $prefix = '')
+ * @method static \Lorisleiva\Actions\Decorators\UniqueJobDecorator makeUniqueJob(string $image_64, string $prefix = '')
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch dispatch(string $image_64, string $prefix = '')
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchIf(bool $boolean, string $image_64, string $prefix = '')
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchUnless(bool $boolean, string $image_64, string $prefix = '')
+ * @method static dispatchSync(string $image_64, string $prefix = '')
+ * @method static dispatchNow(string $image_64, string $prefix = '')
+ * @method static dispatchAfterResponse(string $image_64, string $prefix = '')
+ * @method static string run(string $image_64, string $prefix = '')
+ */
+class FileSaverAction
+{
+}
 namespace App\Actions\Groups;
 
 /**
@@ -25,7 +41,7 @@ class CreateGroupAction
  * @method static dispatchSync()
  * @method static dispatchNow()
  * @method static dispatchAfterResponse()
- * @method static \Illuminate\Database\Eloquent\Collection run()
+ * @method static \Illuminate\Pagination\LengthAwarePaginator run()
  */
 class GetAllGroupsAction
 {
@@ -58,6 +74,20 @@ namespace App\Actions\Users;
  * @method static void run(\App\Models\User $user)
  */
 class LogoutUserAction
+{
+}
+/**
+ * @method static \Lorisleiva\Actions\Decorators\JobDecorator|\Lorisleiva\Actions\Decorators\UniqueJobDecorator makeJob(\App\DTO\UserData $data)
+ * @method static \Lorisleiva\Actions\Decorators\UniqueJobDecorator makeUniqueJob(\App\DTO\UserData $data)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch dispatch(\App\DTO\UserData $data)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchIf(bool $boolean, \App\DTO\UserData $data)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchUnless(bool $boolean, \App\DTO\UserData $data)
+ * @method static dispatchSync(\App\DTO\UserData $data)
+ * @method static dispatchNow(\App\DTO\UserData $data)
+ * @method static dispatchAfterResponse(\App\DTO\UserData $data)
+ * @method static \App\Models\User run(\App\DTO\UserData $data)
+ */
+class UpdateUserAction
 {
 }
 namespace Lorisleiva\Actions\Concerns;

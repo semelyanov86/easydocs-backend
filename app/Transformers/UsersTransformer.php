@@ -30,6 +30,7 @@ final class UsersTransformer extends TransformerAbstract
             'group_id' => (int) $user->group_id,
             'notifications_count' => (int) $user->notifications_count,
             'tokens_count' => (int) $user->tokens_count,
+            'avatar' => $user->avatar,
         ];
     }
 
