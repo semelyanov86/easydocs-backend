@@ -1,11 +1,43 @@
 _id: req_wrk_44747ddeeadc4bb494f6c1061f8f94e1a4ec0b6f
 type: Request
 parentId: fld_wrk_44747ddeeadc4bb494f6c1061f8f94e112dea96f
-modified: 1692640922099
+modified: 1692803481589
 created: 1692639704094
 url: "{{ base_url }}/user/me"
 name: Get current user
-description: ""
+description: >-
+  Allows you to get information data about authenticated user.
+
+
+  Example response:
+
+  ```json
+
+  {
+  	"data": {
+  		"id": 1,
+  		"name": "Sergey Em",
+  		"email": "se@sergeyem.ru",
+  		"email_verified_at": null,
+  		"created_at": "2023-08-20T18:13:18.000000Z",
+  		"updated_at": "2023-08-23T15:07:40.000000Z",
+  		"group_id": 1,
+  		"notifications_count": 0,
+  		"tokens_count": 0,
+  		"avatar": "YrJHUrI6A26iasEdss0C669ZLh3VqP-meta0KHQvdC40LzQvtC6INGN0LrRgNCw0L3QsCDQvtGCIDIwMjMtMDgtMTAgMTQtNDAtMjAucG5n-.png",
+  		"group": {
+  			"data": {
+  				"id": 1,
+  				"name": "Main",
+  				"description": "Main Group",
+  				"created_at": "2023-08-22T06:33:11.000000Z",
+  				"updated_at": "2023-08-22T06:33:11.000000Z"
+  			}
+  		}
+  	}
+  }
+
+  ```
 method: GET
 body: {}
 parameters: []

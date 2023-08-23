@@ -1,7 +1,7 @@
 _id: spc_7b534a41d1cb4919be8e2a243ff23a90
 type: ApiSpec
 parentId: wrk_44747ddeeadc4bb494f6c1061f8f94e1
-modified: 1692640875813
+modified: 1692803312057
 created: 1692631095783
 fileName: EasyDocs
 contents: >-
@@ -20,7 +20,55 @@ contents: >-
   tags:
     - name: user
       description: Operations about user
+    - name: group
+      description: Working with list of groups
   paths:
+    /groups:
+      get:
+        tags:
+          - group
+        summary: Get all groups
+        description: Allows you to get all groups, registered in system
+        operationId: getAllGroups
+        security:
+          - bearerAuth: []
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/Group"
+    "/groups/{groupId}":
+      get:
+        tags:
+          - group
+        summary: Find group by ID
+        description: Returns a single group
+        operationId: getGroupById
+        security:
+          - bearerAuth: []
+        parameters:
+          - name: groupId
+            in: path
+            description: ID of group to return
+            required: true
+            schema:
+              type: integer
+              format: int64
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Group"
+          "400":
+            description: Invalid ID supplied
+          "404":
+            description: Group not found
     /pet:
       post:
         tags:
@@ -376,6 +424,8 @@ contents: >-
         summary: Logs out current logged in user session
         description: ""
         operationId: logoutUser
+        security:
+          - bearerAuth: []
         responses:
           default:
             description: successful operation
@@ -397,6 +447,24 @@ contents: >-
                   $ref: "#/components/schemas/User"
           "400":
             description: Invalid token
+      put:
+        tags:
+          - user
+        summary: Update user
+        description: Change information about currently authenticated user. To update avatar, you need to pass base64 encode file.
+        operationId: updateUser
+        security:
+          - bearerAuth: []
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+          description: Updated user object
+          required: true
+        responses:
+          "422":
+            description: Invalid data provided
     "/user/{username}":
       get:
         tags:
@@ -423,31 +491,6 @@ contents: >-
                   $ref: "#/components/schemas/User"
           "400":
             description: Invalid username supplied
-          "404":
-            description: User not found
-      put:
-        tags:
-          - user
-        summary: Updated user
-        description: This can only be done by the logged in user.
-        operationId: updateUser
-        parameters:
-          - name: username
-            in: path
-            description: name that need to be updated
-            required: true
-            schema:
-              type: string
-        requestBody:
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/User"
-          description: Updated user object
-          required: true
-        responses:
-          "400":
-            description: Invalid user supplied
           "404":
             description: User not found
       delete:
@@ -576,6 +619,15 @@ contents: >-
           group_id:
             type: number
             example: 2
+          notifications_count:
+            type: number
+            example: 2
+          tokens_count:
+            type: number
+            example: 1
+          avatar:
+            type: string
+            example: "avatar.png"
           created_at:
             type: string
             example: "2023-05-09 13:18:18"
@@ -604,6 +656,26 @@ contents: >-
             type: string
         xml:
           name: Tag
+      Group:
+        type: object
+        required:
+          - name
+        properties:
+          id:
+            type: integer
+            format: int64
+          name:
+            type: string
+            example: Main
+          description:
+            type: string
+            example: This is main group
+          users:
+            type: array
+            items:
+              $ref: "#/components/schemas/User"
+        xml:
+          name: Group
       Pet:
         type: object
         required:
