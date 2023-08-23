@@ -40,6 +40,7 @@ final class UserResource extends Resource
                     ->searchable()
                     ->preload()
                     ->required(),
+                Forms\Components\FileUpload::make('avatar'),
             ]);
     }
 
@@ -47,6 +48,7 @@ final class UserResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('avatar')->width(50)->height(50),
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
