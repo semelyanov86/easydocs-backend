@@ -1,0 +1,52 @@
+_id: req_wrk_44747ddeeadc4bb494f6c1061f8f94e112b93d48
+type: Request
+parentId: fld_wrk_44747ddeeadc4bb494f6c1061f8f94e1afffdd08
+modified: 1693034264068
+created: 1692859079005
+url: "{{ base_url }}/folders"
+name: Create new folder
+description: >-
+  Allows you to create new folder. Note, to create a folder, you need to pass
+  parent id. Example request:
+
+  ```json
+
+  {
+    "name": "Main documents",
+    "description": "Here we store main documents",
+    "parent_id": 1,
+    "is_private": false
+  }
+
+  ```
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "name": "Docs from business",
+      "description": "Individual enterpreneur",
+      "parent_id": 1,
+      "is_private": false
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_f90f18cba62a433689481391b980c74a
+  - id: pair_ef0d5dbb2c404d8faf1de4804d7e626f
+    name: Accept
+    value: application/json
+    description: ""
+authentication:
+  type: bearer
+  token: "{{bearerToken}}"
+  prefix: ""
+metaSortKey: -1692859079005
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

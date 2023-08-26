@@ -1,7 +1,7 @@
 _id: spc_7b534a41d1cb4919be8e2a243ff23a90
 type: ApiSpec
 parentId: wrk_44747ddeeadc4bb494f6c1061f8f94e1
-modified: 1692803312057
+modified: 1693035059872
 created: 1692631095783
 fileName: EasyDocs
 contents: >-
@@ -22,6 +22,8 @@ contents: >-
       description: Operations about user
     - name: group
       description: Working with list of groups
+    - name: folder
+      description: Operation with folders. Each document should be attached to folder.
   paths:
     /groups:
       get:
@@ -69,6 +71,139 @@ contents: >-
             description: Invalid ID supplied
           "404":
             description: Group not found
+    /folders:
+      get:
+        tags:
+          - folder
+        summary: Get all folders
+        description: Allows you to get all folders with its children
+        operationId: getAllFolders
+        security:
+          - bearerAuth: []
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: "#/components/schemas/Folder"
+      post:
+        tags:
+          - folder
+        summary: Create new folder
+        description: "Create new folder by passing folder attributes. Returns new object with its children."
+        operationId: addFolder
+        security:
+          - bearerAuth: []
+        requestBody:
+          $ref: "#/components/requestBodies/Folder"
+        responses:
+          "201":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    data:
+                      $ref: "#/components/schemas/Folder"
+          "422":
+            description: Invalid input
+    "/folders/{folderId}":
+      get:
+        tags:
+          - folder
+        summary: Find folder by ID
+        description: Returns a single group
+        operationId: getFolderById
+        security:
+          - bearerAuth: []
+        parameters:
+          - name: folderId
+            in: path
+            description: ID of folder to return
+            required: true
+            schema:
+              type: integer
+              format: int64
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    data:
+                      $ref: "#/components/schemas/Folder"
+                      
+          "400":
+            description: Invalid ID supplied
+          "404":
+            description: Group not found
+      put:
+        tags:
+          - folder
+        summary: Updates a folder with data
+        description: "Fully update of folder with only data you need"
+        operationId: updateFolder
+        security:
+          - bearerAuth: []
+        parameters:
+          - name: folderId
+            in: path
+            description: ID of folder that needs to be updated
+            required: true
+            schema:
+              type: integer
+              format: int64
+        requestBody:
+          content:
+            application/json:
+                schema:
+                  $ref: "#/components/schemas/Folder"
+        responses:
+          "201":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    data:
+                      $ref: "#/components/schemas/Folder"
+          "422":
+            description: Invalid input
+      delete:
+        tags:
+          - folder
+        summary: Delete a folder
+        description: "Delete a folder if it has no subfolders and documents. Returns no content"
+        operationId: deleteFolder
+        security:
+          - bearerAuth: []
+        parameters:
+          - name: folderId
+            in: path
+            description: Folder id to delete
+            required: true
+            schema:
+              type: integer
+              format: int64
+        responses:
+          "204":
+            description: No Content
+          "400":
+            description: Invalid ID supplied
+          "404":
+            description: Folder not found
+          "422":
+            description: Folder has subfolders
     /pet:
       post:
         tags:
@@ -541,6 +676,29 @@ contents: >-
                 $ref: "#/components/schemas/LoginData"
         description: Data for login
         required: true
+      Folder:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: New Folder
+                description:
+                  type: string
+                  example: Some description for folder
+                parent_id:
+                  type: number
+                  example: 1
+                is_private:
+                  type: boolean
+                  example: false
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/Pet"
+        description: Pet object that needs to be added to the store
+        required: true
       Pet:
         content:
           application/json:
@@ -676,6 +834,51 @@ contents: >-
               $ref: "#/components/schemas/User"
         xml:
           name: Group
+      Folder:
+        type: object
+        required:
+          - name
+          - user_id
+        properties:
+          id:
+            type: integer
+            format: int64
+          children:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Category"
+          name:
+            type: string
+            example: Main folder
+          description:
+            type: string
+            example: This is folder description
+          user_id:
+            type: number
+            example: 1
+          group_id:
+            type: number
+            example: 1
+          sequence:
+            type: number
+            example: 1
+          is_private:
+            type: boolean
+            example: false
+          parent_id:
+            type: number
+            example: 2
+          created_at:
+            type: string
+            example: "2023-06-05 12:12:15"
+          updated_at:
+            type: string
+            example: "2023-06-05 12:12:15"
+        xml:
+          name: Folder
       Pet:
         type: object
         required:

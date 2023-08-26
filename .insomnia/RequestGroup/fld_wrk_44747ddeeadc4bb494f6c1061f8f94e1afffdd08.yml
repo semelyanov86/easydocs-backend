@@ -1,0 +1,10 @@
+_id: fld_wrk_44747ddeeadc4bb494f6c1061f8f94e1afffdd08
+type: RequestGroup
+parentId: wrk_44747ddeeadc4bb494f6c1061f8f94e1
+modified: 1692859079011
+created: 1692859079011
+name: folder
+description: Operation with folders. Each document should be attached to folder.
+environment: {}
+environmentPropertyOrder: null
+metaSortKey: -1692859079011

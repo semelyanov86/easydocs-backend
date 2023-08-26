@@ -1,0 +1,102 @@
+_id: req_wrk_44747ddeeadc4bb494f6c1061f8f94e1924335a0
+type: Request
+parentId: fld_wrk_44747ddeeadc4bb494f6c1061f8f94e1afffdd08
+modified: 1693035060373
+created: 1693034263545
+url: "{{ base_url }}/folders"
+name: Get all folders
+description: |-
+  Get a tree of all folders
+  Example response:
+  ```json
+  {
+  	"data": [
+  		{
+  			"id": 1,
+  			"name": "Docs",
+  			"description": "Main Documents",
+  			"user_id": 1,
+  			"group_id": 1,
+  			"sequence": 1,
+  			"is_private": false,
+  			"parent_id": null,
+  			"created_at": "2023-08-24T15:31:55.000000Z",
+  			"updated_at": "2023-08-24T15:31:55.000000Z",
+  			"children": {
+  				"data": [
+  					{
+  						"id": 4,
+  						"name": "Main Documents",
+  						"description": "Core documents of user",
+  						"user_id": 1,
+  						"group_id": 1,
+  						"sequence": 2,
+  						"is_private": false,
+  						"parent_id": 1,
+  						"created_at": "2023-08-24T15:33:13.000000Z",
+  						"updated_at": "2023-08-26T06:33:53.000000Z",
+  						"children": {
+  							"data": [
+  								{
+  									"id": 5,
+  									"name": "Secondary documents",
+  									"description": "Some not useful documents",
+  									"user_id": 1,
+  									"group_id": 1,
+  									"sequence": 1,
+  									"is_private": false,
+  									"parent_id": 4,
+  									"created_at": "2023-08-26T07:08:35.000000Z",
+  									"updated_at": "2023-08-26T07:08:35.000000Z",
+  									"children": {
+  										"data": []
+  									}
+  								}
+  							]
+  						}
+  					},
+  					{
+  						"id": 6,
+  						"name": "Docs from business",
+  						"description": "Individual enterpreneur",
+  						"user_id": 1,
+  						"group_id": 1,
+  						"sequence": 3,
+  						"is_private": false,
+  						"parent_id": 1,
+  						"created_at": "2023-08-26T07:09:06.000000Z",
+  						"updated_at": "2023-08-26T07:09:06.000000Z",
+  						"children": {
+  							"data": []
+  						}
+  					}
+  				]
+  			}
+  		}
+  	]
+  }
+  ```
+method: GET
+body: {}
+parameters: []
+headers:
+  - id: pair_32bd08eb21294710addd56d67ef70435
+    name: Accept
+    value: application/json
+    description: ""
+  - id: pair_2012a17c170b4a2fb9640bb4586ef220
+    name: Content-Type
+    value: application/json
+    description: ""
+authentication:
+  type: bearer
+  token: "{{bearerToken}}"
+  prefix: ""
+metaSortKey: -1693034263545
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

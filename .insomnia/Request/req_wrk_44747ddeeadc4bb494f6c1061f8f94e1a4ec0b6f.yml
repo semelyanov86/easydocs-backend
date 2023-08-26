@@ -1,7 +1,7 @@
 _id: req_wrk_44747ddeeadc4bb494f6c1061f8f94e1a4ec0b6f
 type: Request
 parentId: fld_wrk_44747ddeeadc4bb494f6c1061f8f94e112dea96f
-modified: 1692803481589
+modified: 1692859079490
 created: 1692639704094
 url: "{{ base_url }}/user/me"
 name: Get current user

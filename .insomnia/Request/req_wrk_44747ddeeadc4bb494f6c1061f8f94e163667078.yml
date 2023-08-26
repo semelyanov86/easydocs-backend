@@ -1,0 +1,69 @@
+_id: req_wrk_44747ddeeadc4bb494f6c1061f8f94e163667078
+type: Request
+parentId: fld_wrk_44747ddeeadc4bb494f6c1061f8f94e1afffdd08
+modified: 1693033308605
+created: 1692895107762
+url: "{{ base_url }}/folders/{{ folderId }}"
+name: Find folder by ID
+description: |-
+  Here you can get current folder structure by it's ID.
+  Example response:
+  ```json
+  {
+  	"data": {
+  		"id": 1,
+  		"name": "Docs",
+  		"description": "Main Documents",
+  		"user_id": 1,
+  		"group_id": 1,
+  		"sequence": 1,
+  		"is_private": false,
+  		"parent_id": null,
+  		"created_at": "2023-08-24T15:31:55.000000Z",
+  		"updated_at": "2023-08-24T15:31:55.000000Z",
+  		"children": {
+  			"data": [
+  				{
+  					"id": 4,
+  					"name": "Main Documents",
+  					"description": "Core documents of user",
+  					"user_id": 1,
+  					"group_id": 1,
+  					"sequence": 2,
+  					"is_private": false,
+  					"parent_id": 1,
+  					"created_at": "2023-08-24T15:33:13.000000Z",
+  					"updated_at": "2023-08-26T06:33:53.000000Z",
+  					"children": {
+  						"data": []
+  					}
+  				}
+  			]
+  		}
+  	}
+  }
+  ```
+method: GET
+body: {}
+parameters: []
+headers:
+  - id: pair_bec14a2644cb49649bea69430bdbc007
+    name: Accept
+    value: application/json
+    description: ""
+  - id: pair_84720aff82244d43bca9309e840944fc
+    name: Content-Type
+    value: application/json
+    description: ""
+authentication:
+  type: bearer
+  token: "{{bearerToken}}"
+  prefix: ""
+metaSortKey: -1692895107762
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

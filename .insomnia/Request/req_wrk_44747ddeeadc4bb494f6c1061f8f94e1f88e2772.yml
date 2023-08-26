@@ -1,0 +1,32 @@
+_id: req_wrk_44747ddeeadc4bb494f6c1061f8f94e1f88e2772
+type: Request
+parentId: fld_wrk_44747ddeeadc4bb494f6c1061f8f94e1afffdd08
+modified: 1693035090550
+created: 1693035059845
+url: "{{ base_url }}/folders/{{ folderId }}"
+name: Delete a folder
+description: Deletes a folder if it has no subfolders or documents
+method: DELETE
+body: {}
+parameters: []
+headers:
+  - id: pair_7cb025531dc34dfa8919c505f444f13f
+    name: Accept
+    value: application/json
+    description: ""
+  - id: pair_8f2f9152622c4b50adffce5b5dddccdc
+    name: Content-Type
+    value: application/json
+    description: ""
+authentication:
+  type: bearer
+  token: "{{bearerToken}}"
+  prefix: ""
+metaSortKey: -1693035059845
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

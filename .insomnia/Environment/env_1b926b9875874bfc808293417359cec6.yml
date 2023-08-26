@@ -1,7 +1,7 @@
 _id: env_1b926b9875874bfc808293417359cec6
 type: Environment
 parentId: env_b9cd7d8b790a9e6f4f9b9927bd8dae8af20df52d
-modified: 1692803356215
+modified: 1692895127750
 created: 1692640043029
 name: Local
 data:
@@ -10,6 +10,7 @@ data:
   host: easydocs.test:8000
   bearerToken: 1|jV3d4RzQtsWgZO9F70pMed1cpaPIApj2MrMzK0iW
   groupId: 1
+  folderId: 1
 dataPropertyOrder:
   "&":
     - scheme
@@ -17,6 +18,7 @@ dataPropertyOrder:
     - host
     - bearerToken
     - groupId
+    - folderId
 color: null
 isPrivate: false
 metaSortKey: 1692640043029
