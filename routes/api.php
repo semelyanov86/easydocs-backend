@@ -20,6 +20,11 @@ Route::middleware('auth:sanctum')->prefix('/v1')->group(function () {
     Route::get('/user/me', [\App\Http\Controllers\UserController::class, 'me'])->name('user.me');
     Route::put('/user/me', [\App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 
+    Route::get('/folders', [\App\Http\Controllers\FolderController::class, 'index'])->name('folder.index');
+    Route::post('/folders', [\App\Http\Controllers\FolderController::class, 'store'])->name('folder.store');
+    Route::get('/folders/{id}', [\App\Http\Controllers\FolderController::class, 'show'])->name('folder.show');
+    Route::put('/folders/{id}', [\App\Http\Controllers\FolderController::class, 'update'])->name('folder.update');
+
     Route::get('/groups', [\App\Http\Controllers\GroupController::class, 'index'])->name('group.index');
     Route::get('/groups/{id}', [\App\Http\Controllers\GroupController::class, 'show'])->name('group.show');
 });

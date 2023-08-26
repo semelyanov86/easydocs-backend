@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Folder;
 use App\Models\Group;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -29,5 +30,15 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now(),
         ]);
         $user->assignRole(['super_admin', 'filament_user']);
+
+        $folder = Folder::create([
+            'id' => 1,
+            'name' => 'Docs',
+            'description' => 'Main documents',
+            'user_id' => $user->id,
+            'group_id' => $group->id,
+            'is_private' => false,
+            'sequence' => 1,
+        ])->saveAsRoot();
     }
 }

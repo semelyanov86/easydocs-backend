@@ -16,6 +16,78 @@ namespace App\Actions\Files;
 class FileSaverAction
 {
 }
+namespace App\Actions\Folders;
+
+/**
+ * @method static \Lorisleiva\Actions\Decorators\JobDecorator|\Lorisleiva\Actions\Decorators\UniqueJobDecorator makeJob(\App\DTO\FolderData $data)
+ * @method static \Lorisleiva\Actions\Decorators\UniqueJobDecorator makeUniqueJob(\App\DTO\FolderData $data)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch dispatch(\App\DTO\FolderData $data)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchIf(bool $boolean, \App\DTO\FolderData $data)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchUnless(bool $boolean, \App\DTO\FolderData $data)
+ * @method static dispatchSync(\App\DTO\FolderData $data)
+ * @method static dispatchNow(\App\DTO\FolderData $data)
+ * @method static dispatchAfterResponse(\App\DTO\FolderData $data)
+ * @method static \App\Models\Folder run(\App\DTO\FolderData $data)
+ */
+class CreateFolderAction
+{
+}
+/**
+ * @method static \Lorisleiva\Actions\Decorators\JobDecorator|\Lorisleiva\Actions\Decorators\UniqueJobDecorator makeJob(\App\Models\User $user)
+ * @method static \Lorisleiva\Actions\Decorators\UniqueJobDecorator makeUniqueJob(\App\Models\User $user)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch dispatch(\App\Models\User $user)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchIf(bool $boolean, \App\Models\User $user)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchUnless(bool $boolean, \App\Models\User $user)
+ * @method static dispatchSync(\App\Models\User $user)
+ * @method static dispatchNow(\App\Models\User $user)
+ * @method static dispatchAfterResponse(\App\Models\User $user)
+ * @method static \Illuminate\Database\Eloquent\Collection run(\App\Models\User $user)
+ */
+class GetAllFoldersAction
+{
+}
+/**
+ * @method static \Lorisleiva\Actions\Decorators\JobDecorator|\Lorisleiva\Actions\Decorators\UniqueJobDecorator makeJob(int $id, \App\Models\User $user)
+ * @method static \Lorisleiva\Actions\Decorators\UniqueJobDecorator makeUniqueJob(int $id, \App\Models\User $user)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch dispatch(int $id, \App\Models\User $user)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchIf(bool $boolean, int $id, \App\Models\User $user)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchUnless(bool $boolean, int $id, \App\Models\User $user)
+ * @method static dispatchSync(int $id, \App\Models\User $user)
+ * @method static dispatchNow(int $id, \App\Models\User $user)
+ * @method static dispatchAfterResponse(int $id, \App\Models\User $user)
+ * @method static \App\Models\Folder run(int $id, \App\Models\User $user)
+ */
+class GetFolderByIdAction
+{
+}
+/**
+ * @method static \Lorisleiva\Actions\Decorators\JobDecorator|\Lorisleiva\Actions\Decorators\UniqueJobDecorator makeJob(int $parent_id)
+ * @method static \Lorisleiva\Actions\Decorators\UniqueJobDecorator makeUniqueJob(int $parent_id)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch dispatch(int $parent_id)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchIf(bool $boolean, int $parent_id)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchUnless(bool $boolean, int $parent_id)
+ * @method static dispatchSync(int $parent_id)
+ * @method static dispatchNow(int $parent_id)
+ * @method static dispatchAfterResponse(int $parent_id)
+ * @method static int run(int $parent_id)
+ */
+class GetNewSequenceAction
+{
+}
+/**
+ * @method static \Lorisleiva\Actions\Decorators\JobDecorator|\Lorisleiva\Actions\Decorators\UniqueJobDecorator makeJob(\App\DTO\FolderData $folderData, \App\Models\User $user)
+ * @method static \Lorisleiva\Actions\Decorators\UniqueJobDecorator makeUniqueJob(\App\DTO\FolderData $folderData, \App\Models\User $user)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch dispatch(\App\DTO\FolderData $folderData, \App\Models\User $user)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchIf(bool $boolean, \App\DTO\FolderData $folderData, \App\Models\User $user)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchUnless(bool $boolean, \App\DTO\FolderData $folderData, \App\Models\User $user)
+ * @method static dispatchSync(\App\DTO\FolderData $folderData, \App\Models\User $user)
+ * @method static dispatchNow(\App\DTO\FolderData $folderData, \App\Models\User $user)
+ * @method static dispatchAfterResponse(\App\DTO\FolderData $folderData, \App\Models\User $user)
+ * @method static \App\Models\Folder run(\App\DTO\FolderData $folderData, \App\Models\User $user)
+ */
+class UpdateFolderAction
+{
+}
 namespace App\Actions\Groups;
 
 /**
