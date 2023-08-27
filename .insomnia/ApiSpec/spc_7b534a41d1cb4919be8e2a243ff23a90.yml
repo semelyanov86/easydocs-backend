@@ -1,7 +1,7 @@
 _id: spc_7b534a41d1cb4919be8e2a243ff23a90
 type: ApiSpec
 parentId: wrk_44747ddeeadc4bb494f6c1061f8f94e1
-modified: 1693035059872
+modified: 1693122874245
 created: 1692631095783
 fileName: EasyDocs
 contents: >-
@@ -204,6 +204,35 @@ contents: >-
             description: Folder not found
           "422":
             description: Folder has subfolders
+    /folders/{folderId}/activities:
+      get:
+        tags:
+          - folder
+        summary: Get folder activities
+        description: Get all logging operations about current folder
+        operationId: getFolderActivities
+        security:
+          - bearerAuth: []
+        parameters:
+          - name: folderId
+            in: path
+            description: Folder id to get activities
+            required: true
+            schema:
+              type: integer
+              format: int64
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: "#/components/schemas/FolderActivities"
     /pet:
       post:
         tags:
@@ -879,6 +908,52 @@ contents: >-
             example: "2023-06-05 12:12:15"
         xml:
           name: Folder
+      FolderActivities:
+        type: object
+        properties:
+          id:
+            type: integer
+            example: 2
+          log_name:
+            type: string
+            example: "default"
+          description:
+            type: string
+            example: "updated"
+          event:
+            type: string
+            example: "updated"
+          changes:
+            type: object
+            properties:
+              old:
+                $ref: '#/components/schemas/FolderChangesAttributes'
+              attributes:
+                $ref: '#/components/schemas/FolderChangesAttributes'
+          batch_uuid:
+            type: string
+          properties:
+            type: object
+            properties:
+              old:
+                $ref: '#/components/schemas/FolderChangesAttributes'
+              attributes:
+                $ref: '#/components/schemas/FolderChangesAttributes'
+          created_at:
+            type: string
+            format: date-time
+            example: "2023-08-27T07:47:00.000000Z"
+          updated_at:
+            type: string
+            format: date-time
+            example: "2023-08-27T07:47:00.000000Z"
+          user:
+            type: object
+            properties:
+              data:
+                $ref: '#/components/schemas/User'
+        xml:
+          name: FolderActivities
       Pet:
         type: object
         required:
@@ -926,4 +1001,47 @@ contents: >-
             type: string
           message:
             type: string
+      FolderChangesAttributes:
+        type: object
+        properties:
+          id:
+            type: integer
+            example: 4
+          _lft:
+            type: integer
+            example: 2
+          _rgt:
+            type: integer
+            example: 5
+          name:
+            type: string
+            example: "Main Documents"
+          user_id:
+            type: integer
+            example: 1
+          group_id:
+            type: integer
+            example: 1
+          sequence:
+            type: integer
+            example: 2
+          parent_id:
+            type: integer
+            example: 1
+          created_at:
+            type: string
+            format: date-time
+            example: "2023-08-24T15:33:13.000000Z"
+          deleted_at:
+            type: string
+          is_private:
+            type: integer
+            example: 0
+          updated_at:
+            type: string
+            format: date-time
+            example: "2023-08-27T07:47:00.000000Z"
+          description:
+            type: string
+            example: "Core documents of user"
 contentType: yaml

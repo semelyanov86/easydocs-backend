@@ -1,0 +1,174 @@
+_id: req_wrk_44747ddeeadc4bb494f6c1061f8f94e13f6758a3
+type: Request
+parentId: fld_wrk_44747ddeeadc4bb494f6c1061f8f94e1afffdd08
+modified: 1693122919156
+created: 1693121654727
+url: "{{ base_url }}/folders/{{ folderId }}/activities"
+name: Get folder activities
+description: >-
+  Shows all log changed, happened in current folder.
+
+  Example response:
+
+  ```json
+
+  {
+  	"data": [
+  		{
+  			"id": 1,
+  			"log_name": "default",
+  			"description": "updated",
+  			"event": "updated",
+  			"changes": [],
+  			"batch_uuid": null,
+  			"properties": [],
+  			"created_at": "2023-08-27T07:25:46.000000Z",
+  			"updated_at": "2023-08-27T07:25:46.000000Z",
+  			"user": {
+  				"data": {
+  					"id": 1,
+  					"name": "Sergey Em",
+  					"email": "se@sergeyem.ru",
+  					"email_verified_at": null,
+  					"created_at": "2023-08-20T18:13:18.000000Z",
+  					"updated_at": "2023-08-23T15:07:40.000000Z",
+  					"group_id": 1,
+  					"notifications_count": 0,
+  					"tokens_count": 0,
+  					"avatar": "YrJHUrI6A26iasEdss0C669ZLh3VqP-meta0KHQvdC40LzQvtC6INGN0LrRgNCw0L3QsCDQvtGCIDIwMjMtMDgtMTAgMTQtNDAtMjAucG5n-.png",
+  					"group": {
+  						"data": {
+  							"id": 1,
+  							"name": "Main",
+  							"description": "Main Group",
+  							"created_at": "2023-08-22T06:33:11.000000Z",
+  							"updated_at": "2023-08-22T06:33:11.000000Z"
+  						}
+  					}
+  				}
+  			}
+  		},
+  		{
+  			"id": 2,
+  			"log_name": "default",
+  			"description": "updated",
+  			"event": "updated",
+  			"changes": {
+  				"old": {
+  					"id": 4,
+  					"_lft": 2,
+  					"_rgt": 5,
+  					"name": "Main Docs",
+  					"user_id": 1,
+  					"group_id": 1,
+  					"sequence": 2,
+  					"parent_id": 1,
+  					"created_at": "2023-08-24T15:33:13.000000Z",
+  					"deleted_at": null,
+  					"is_private": 0,
+  					"updated_at": "2023-08-27T07:25:46.000000Z",
+  					"description": "Core documents of user"
+  				},
+  				"attributes": {
+  					"id": 4,
+  					"_lft": 2,
+  					"_rgt": 5,
+  					"name": "Main Documents",
+  					"user_id": 1,
+  					"group_id": 1,
+  					"sequence": 2,
+  					"parent_id": 1,
+  					"created_at": "2023-08-24T15:33:13.000000Z",
+  					"deleted_at": null,
+  					"is_private": 0,
+  					"updated_at": "2023-08-27T07:47:00.000000Z",
+  					"description": "Core documents of user"
+  				}
+  			},
+  			"batch_uuid": null,
+  			"properties": {
+  				"old": {
+  					"id": 4,
+  					"_lft": 2,
+  					"_rgt": 5,
+  					"name": "Main Docs",
+  					"user_id": 1,
+  					"group_id": 1,
+  					"sequence": 2,
+  					"parent_id": 1,
+  					"created_at": "2023-08-24T15:33:13.000000Z",
+  					"deleted_at": null,
+  					"is_private": 0,
+  					"updated_at": "2023-08-27T07:25:46.000000Z",
+  					"description": "Core documents of user"
+  				},
+  				"attributes": {
+  					"id": 4,
+  					"_lft": 2,
+  					"_rgt": 5,
+  					"name": "Main Documents",
+  					"user_id": 1,
+  					"group_id": 1,
+  					"sequence": 2,
+  					"parent_id": 1,
+  					"created_at": "2023-08-24T15:33:13.000000Z",
+  					"deleted_at": null,
+  					"is_private": 0,
+  					"updated_at": "2023-08-27T07:47:00.000000Z",
+  					"description": "Core documents of user"
+  				}
+  			},
+  			"created_at": "2023-08-27T07:47:00.000000Z",
+  			"updated_at": "2023-08-27T07:47:00.000000Z",
+  			"user": {
+  				"data": {
+  					"id": 1,
+  					"name": "Sergey Em",
+  					"email": "se@sergeyem.ru",
+  					"email_verified_at": null,
+  					"created_at": "2023-08-20T18:13:18.000000Z",
+  					"updated_at": "2023-08-23T15:07:40.000000Z",
+  					"group_id": 1,
+  					"notifications_count": 0,
+  					"tokens_count": 0,
+  					"avatar": "YrJHUrI6A26iasEdss0C669ZLh3VqP-meta0KHQvdC40LzQvtC6INGN0LrRgNCw0L3QsCDQvtGCIDIwMjMtMDgtMTAgMTQtNDAtMjAucG5n-.png",
+  					"group": {
+  						"data": {
+  							"id": 1,
+  							"name": "Main",
+  							"description": "Main Group",
+  							"created_at": "2023-08-22T06:33:11.000000Z",
+  							"updated_at": "2023-08-22T06:33:11.000000Z"
+  						}
+  					}
+  				}
+  			}
+  		}
+  	]
+  }
+
+  ```
+method: GET
+body: {}
+parameters: []
+headers:
+  - id: pair_c573d104da00449092b883f1a7e2ad03
+    name: Accept
+    value: application/json
+    description: ""
+  - id: pair_da0c8525b364495db864ce883dae8806
+    name: Content-Type
+    value: application/json
+    description: ""
+authentication:
+  type: bearer
+  token: "{{bearerToken}}"
+  prefix: ""
+metaSortKey: -1693121654727
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
