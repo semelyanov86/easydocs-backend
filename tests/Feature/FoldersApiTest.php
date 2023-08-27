@@ -225,4 +225,45 @@ final class FoldersApiTest extends TestCase
         ]);
         $response->assertJsonCount(1, 'data.0.children.data');
     }
+
+    public function testFolderActivities(): void
+    {
+        $user = $this->generateUser();
+
+        Sanctum::actingAs(
+            $user,
+            ['view-folders']
+        );
+
+        $parent = $this->generateParentFolder($user);
+        /** @var Folder $childFolder */
+        $childFolder = Folder::factory()->createOne([
+            'parent_id' => $parent->id,
+            'user_id' => $user->id,
+            'group_id' => $user->group_id,
+        ]);
+        $folderArr = $childFolder->toArray();
+        $folderArr['name'] = 'name changed';
+        $folderArr['is_private'] = false;
+
+        $response = $this->putJson(route('folder.update', $childFolder->id), $folderArr);
+        $response->assertStatus(Response::HTTP_ACCEPTED);
+
+        $response = $this->getJson(route('folder.activities', $childFolder->id));
+        $response->assertOk();
+        $response->assertJson([
+            'data' => [
+                [
+                    'log_name' => 'default',
+                    'description' => 'created',
+                    'event' => 'created',
+                ],
+                [
+                    'log_name' => 'default',
+                    'description' => 'updated',
+                    'event' => 'updated',
+                ],
+            ],
+        ]);
+    }
 }

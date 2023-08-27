@@ -7,9 +7,11 @@ namespace App\Http\Controllers;
 use App\Actions\Folders\CreateFolderAction;
 use App\Actions\Folders\DeleteFolderAction;
 use App\Actions\Folders\GetAllFoldersAction;
+use App\Actions\Folders\GetFolderActivitiesAction;
 use App\Actions\Folders\GetFolderByIdAction;
 use App\Actions\Folders\UpdateFolderAction;
 use App\DTO\FolderData;
+use App\Transformers\ActivityTransformer;
 use App\Transformers\FolderTransformer;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -69,5 +71,14 @@ final class FolderController extends Controller
         $action->handle($folder, $user);
 
         return response()->noContent();
+    }
+
+    public function activities(Request $request, int $folder, GetFolderActivitiesAction $action): JsonResponse
+    {
+        $user = \request()->user();
+        abort_if(! $user, 403, 'No user found');
+        $activities = $action->handle($folder, $user);
+
+        return fractal()->collection($activities, new ActivityTransformer())->respond();
     }
 }

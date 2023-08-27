@@ -24,6 +24,7 @@ Route::middleware('auth:sanctum')->prefix('/v1')->group(function () {
     Route::post('/folders', [\App\Http\Controllers\FolderController::class, 'store'])->name('folder.store');
     Route::get('/folders/{id}', [\App\Http\Controllers\FolderController::class, 'show'])->name('folder.show');
     Route::put('/folders/{id}', [\App\Http\Controllers\FolderController::class, 'update'])->name('folder.update');
+    Route::get('/folders/{id}/activities', [\App\Http\Controllers\FolderController::class, 'activities'])->name('folder.activities');
 
     Route::get('/groups', [\App\Http\Controllers\GroupController::class, 'index'])->name('group.index');
     Route::get('/groups/{id}', [\App\Http\Controllers\GroupController::class, 'show'])->name('group.show');

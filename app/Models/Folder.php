@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Kalnoy\Nestedset\Collection;
 use Kalnoy\Nestedset\NodeTrait;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * @method static Collection<Folder> descendantsAndSelf(int $Id)
@@ -18,7 +20,7 @@ use Kalnoy\Nestedset\NodeTrait;
  */
 final class Folder extends Model
 {
-    use SoftDeletes, HasFactory, NodeTrait;
+    use SoftDeletes, HasFactory, NodeTrait, LogsActivity;
 
     protected $fillable = [
         'name',
@@ -47,5 +49,10 @@ final class Folder extends Model
         }
 
         return false;
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()->logAll();
     }
 }
