@@ -29,6 +29,8 @@ final class Folder extends Model
         'group_id',
         'sequence',
         'parent_id',
+        'seedms_id',
+        'is_private',
     ];
 
     /**

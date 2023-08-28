@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\DTO;
 
 use Spatie\LaravelData\Attributes\Validation\Exists;
+use Spatie\LaravelData\Attributes\Validation\Nullable;
+use Spatie\LaravelData\Attributes\Validation\Numeric;
 use Spatie\LaravelData\Data;
 
 final class FolderData extends Data
@@ -21,6 +23,8 @@ final class FolderData extends Data
         public bool $is_private,
         #[Exists(table: 'folders', column: 'id')]
         public ?int $parent_id,
+        #[Numeric] #[Nullable]
+        public ?int $seedms_id,
     ) {
     }
 }
