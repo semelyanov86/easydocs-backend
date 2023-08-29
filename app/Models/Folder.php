@@ -7,6 +7,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Kalnoy\Nestedset\Collection;
 use Kalnoy\Nestedset\NodeTrait;
@@ -39,6 +40,14 @@ final class Folder extends Model
     public function parent(): BelongsTo
     {
         return $this->belongsTo(__CLASS__, 'parent_id');
+    }
+
+    /**
+     * @return HasMany<Document>
+     */
+    public function documents(): HasMany
+    {
+        return $this->hasMany(Document::class);
     }
 
     public function isViewAllowed(int $userId, ?int $groupId): bool

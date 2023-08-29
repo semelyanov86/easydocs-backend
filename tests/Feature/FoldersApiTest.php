@@ -5,38 +5,15 @@ declare(strict_types=1);
 namespace Tests\Feature;
 
 use App\Models\Folder;
-use App\Models\Group;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
+use Tests\Traits\GenerateUserAndFolder;
 
 final class FoldersApiTest extends TestCase
 {
-    use RefreshDatabase;
-
-    protected function generateUser(): User
-    {
-        /** @var Group $group */
-        $group = Group::factory()->createOne();
-
-        return User::factory()->createOne([
-            'group_id' => $group->id,
-        ]);
-    }
-
-    protected function generateParentFolder(User $user): Folder
-    {
-        /** @var Folder $folder */
-        $folder = Folder::factory()->createOne([
-            'user_id' => $user->id,
-            'group_id' => $user->group_id,
-            'parent_id' => null,
-        ]);
-
-        return $folder;
-    }
+    use RefreshDatabase, GenerateUserAndFolder;
 
     public function testCreateFolder(): void
     {

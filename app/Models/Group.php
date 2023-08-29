@@ -25,4 +25,12 @@ final class Group extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    /**
+     * @return HasMany<Document>
+     */
+    public function documents(): HasMany
+    {
+        return $this->hasMany(Document::class);
+    }
 }
