@@ -1,0 +1,73 @@
+_id: req_f344c504d5cb4925a87c85d022570528
+type: Request
+parentId: fld_cf585742259342298216cd62cf13c4db
+modified: 1693288029709
+created: 1693287656941
+url: "{{ _.base_url }}/documents/1"
+name: Get document by id
+description: |-
+  Returns document object by its ID.
+  Example response:
+  ```json
+  {
+  	"data": {
+  		"id": 1,
+  		"name": "New Document",
+  		"description": "Some description for document",
+  		"date_valid": "2023-08-09",
+  		"sequence": 1,
+  		"state": "Created",
+  		"state_color": "brown",
+  		"folder_id": 1,
+  		"public_link": null,
+  		"version": 1,
+  		"deleted_at": null,
+  		"created_at": "2023-08-29T05:44:16.000000Z",
+  		"updated_at": "2023-08-29T05:44:16.000000Z",
+  		"media": {
+  			"data": [
+  				{
+  					"uuid": "356b20c8-2690-42e2-b6e7-e0e46af3122e",
+  					"type": "image",
+  					"extension": "png",
+  					"humanReadableSize": "108.73 KB",
+  					"previewUrl": "",
+  					"originalUrl": "http:\/\/easydocs.test:8000\/storage\/1\/pass.png-1.png",
+  					"id": 1,
+  					"name": "media-libraryEi5csm",
+  					"file_name": "pass.png-1.png",
+  					"mime_type": "image\/png",
+  					"size": 111336,
+  					"version": 1,
+  					"order_column": 1,
+  					"created_at": "2023-08-29T05:44:16.000000Z",
+  					"updated_at": "2023-08-29T05:44:16.000000Z"
+  				}
+  			]
+  		}
+  	}
+  }
+  ```
+method: GET
+body: {}
+parameters: []
+headers:
+  - id: pair_16216765eedc4277b09c449ea4a308a7
+    name: Accept
+    value: application/json
+    description: ""
+  - id: pair_981b4b0bf7024b10ae7975c42a181875
+    name: Content-Type
+    value: application/json
+    description: ""
+authentication:
+  type: bearer
+  token: "{{ _.bearerToken }}"
+metaSortKey: -1693287656941
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

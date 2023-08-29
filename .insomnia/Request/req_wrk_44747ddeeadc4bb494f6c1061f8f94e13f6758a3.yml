@@ -1,7 +1,7 @@
 _id: req_wrk_44747ddeeadc4bb494f6c1061f8f94e13f6758a3
 type: Request
 parentId: fld_wrk_44747ddeeadc4bb494f6c1061f8f94e1afffdd08
-modified: 1693122919156
+modified: 1693286512971
 created: 1693121654727
 url: "{{ base_url }}/folders/{{ folderId }}/activities"
 name: Get folder activities
