@@ -1,0 +1,89 @@
+_id: req_b9b4c47180344128b6721c7dd0011be2
+type: Request
+parentId: fld_cf585742259342298216cd62cf13c4db
+modified: 1693328777066
+created: 1693317409510
+url: "{{ _.base_url }}/documents"
+name: Get All Documents
+description: >-
+  Allows to get list of all documents with pagination.
+
+
+  Example response:
+
+  ```json
+
+  {
+  	"data": [
+  		{
+  			"id": 1,
+  			"name": "New Document",
+  			"description": "Some description for document",
+  			"date_valid": "2023-08-09",
+  			"sequence": 1,
+  			"state": "Created",
+  			"state_color": "brown",
+  			"folder_id": 1,
+  			"public_link": null,
+  			"is_private": 0,
+  			"version": 1,
+  			"created_at": "2023-08-29T05:44:16.000000Z",
+  			"updated_at": "2023-08-29T05:44:16.000000Z",
+  			"media": {
+  				"data": [
+  					{
+  						"uuid": "356b20c8-2690-42e2-b6e7-e0e46af3122e",
+  						"type": "image",
+  						"extension": "png",
+  						"humanReadableSize": "108.73 KB",
+  						"originalUrl": "http:\/\/easydocs.test:8000\/storage\/1\/pass.png-1.png",
+  						"id": 1,
+  						"name": "media-libraryEi5csm",
+  						"file_name": "pass.png-1.png",
+  						"mime_type": "image\/png",
+  						"size": 111336,
+  						"version": 1,
+  						"order_column": 1,
+  						"created_at": "2023-08-29T05:44:16.000000Z",
+  						"updated_at": "2023-08-29T05:44:16.000000Z"
+  					}
+  				]
+  			}
+  		}
+  	]
+  }
+
+  ```
+method: GET
+body: {}
+parameters:
+  - id: pair_4b19365dfdf5453387ed37e5ba704976
+    name: page
+    value: "1"
+    description: ""
+    disabled: false
+  - id: pair_4dd893d705bb4417ad75f1c01b255c59
+    name: size
+    value: "5"
+    description: ""
+    disabled: false
+headers:
+  - id: pair_8b4148a1d43b4e048c70595e5bb5ca4e
+    name: Accept
+    value: application/json
+    description: ""
+  - id: pair_c583c6f891a44e699610d97676af9f3b
+    name: Content-Type
+    value: application/json
+    description: ""
+authentication:
+  type: bearer
+  token: "{{ _.bearerToken }}"
+metaSortKey: -1693317409510
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
