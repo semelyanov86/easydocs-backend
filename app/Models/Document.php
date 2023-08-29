@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Builders\DocumentBuilder;
 use App\States\DocumentState;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Query\Builder;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\ModelStates\HasStates;
@@ -33,11 +35,13 @@ final class Document extends Model implements HasMedia
         'seedms_id',
         'public_link',
         'version',
+        'is_private',
     ];
 
     protected $casts = [
         'date_valid' => 'datetime',
         'state' => DocumentState::class,
+        'is_private' => 'boolean',
     ];
 
     /**
@@ -62,5 +66,13 @@ final class Document extends Model implements HasMedia
     public function folder(): BelongsTo
     {
         return $this->belongsTo(Folder::class);
+    }
+
+    /**
+     * @param  Builder  $query
+     */
+    public function newEloquentBuilder($query): DocumentBuilder
+    {
+        return new DocumentBuilder($query);
     }
 }

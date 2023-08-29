@@ -26,6 +26,7 @@ final class DocumentFactory extends Factory
             'seedms_id' => $this->faker->randomNumber(),
             'public_link' => $this->faker->word(),
             'version' => $this->faker->randomNumber(),
+            'is_private' => $this->faker->boolean(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

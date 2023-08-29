@@ -121,4 +121,100 @@ final class DocumentsApiTest extends TestCase
             ],
         ]);
     }
+
+    public function testGetAllDocuments(): void
+    {
+        $user = $this->generateUser();
+
+        Sanctum::actingAs(
+            $user,
+            ['view-documents']
+        );
+
+        $folder = $this->generateParentFolder($user);
+        /** @var Document $document */
+        $document = Document::factory()->createOne([
+            'folder_id' => $folder->id,
+            'user_id' => $user->id,
+            'group_id' => $user->group_id,
+            'state' => Created::class,
+        ]);
+        $file = UploadedFile::fake()->create('somefile.docx', 13);
+        $document->addMedia($file)->toMediaCollection(Document::COLLECTION_NAME);
+        $media = $document->getFirstMedia(Document::COLLECTION_NAME);
+
+        $response = $this->getJson(route('document.index'));
+        $response->assertStatus(Response::HTTP_OK);
+        $response->assertJson([
+            'data' => [
+                [
+                    'id' => 1,
+                    'name' => $document->name,
+                    'description' => $document->description,
+                    'date_valid' => $document->date_valid?->format('Y-m-d'),
+                    'sequence' => $document->sequence,
+                    'state' => $document->state->name(),
+                    'state_color' => $document->state->color(),
+                    'folder_id' => $document->folder_id,
+                    'public_link' => $document->public_link,
+                    'version' => $document->version,
+                    'media' => [
+                        'data' => [
+                            [
+                                'type' => $media->type,
+                                'extension' => $media->extension,
+                                'id' => $media->id,
+                                'file_name' => $media->file_name,
+                                'mime_type' => $media->mime_type,
+                                'version' => $media->getCustomProperty(Document::VERSION_PROPERTY),
+                                'order_column' => $media->order_column,
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'meta' => [
+                'pagination' => [
+                    'total' => 1,
+                    'count' => 1,
+                    'per_page' => 15,
+                    'current_page' => 1,
+                    'total_pages' => 1,
+                ],
+            ],
+        ]);
+    }
+
+    public function testPaginationLinks(): void
+    {
+        $user = $this->generateUser();
+
+        Sanctum::actingAs(
+            $user,
+            ['view-documents']
+        );
+
+        $folder = $this->generateParentFolder($user);
+
+        Document::factory()->count(20)->create([
+            'folder_id' => $folder->id,
+            'user_id' => $user->id,
+            'group_id' => $user->group_id,
+            'state' => Created::class,
+        ]);
+        $response = $this->getJson(route('document.index'));
+        $response->assertOk();
+        $response->assertJsonCount(15, 'data');
+        $response->assertSee('\/api\/v1\/documents?page=2');
+
+        $response = $this->getJson(route('document.index', ['page' => 2]));
+        $response->assertOk();
+        $response->assertJsonCount(5, 'data');
+        $response->assertSee('\/api\/v1\/documents?page=1');
+
+        $response = $this->getJson(route('document.index', ['size' => 3, 'page' => 3]));
+        $response->assertOk();
+        $response->assertJsonCount(3, 'data');
+        $response->assertSee('\/api\/v1\/documents?page=4');
+    }
 }

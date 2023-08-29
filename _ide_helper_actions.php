@@ -45,6 +45,20 @@ class DeleteDocumentAction
 {
 }
 /**
+ * @method static \Lorisleiva\Actions\Decorators\JobDecorator|\Lorisleiva\Actions\Decorators\UniqueJobDecorator makeJob(\App\Models\User $user, int $perPage = 15)
+ * @method static \Lorisleiva\Actions\Decorators\UniqueJobDecorator makeUniqueJob(\App\Models\User $user, int $perPage = 15)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch dispatch(\App\Models\User $user, int $perPage = 15)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchIf(bool $boolean, \App\Models\User $user, int $perPage = 15)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchUnless(bool $boolean, \App\Models\User $user, int $perPage = 15)
+ * @method static dispatchSync(\App\Models\User $user, int $perPage = 15)
+ * @method static dispatchNow(\App\Models\User $user, int $perPage = 15)
+ * @method static dispatchAfterResponse(\App\Models\User $user, int $perPage = 15)
+ * @method static \Illuminate\Contracts\Pagination\LengthAwarePaginator run(\App\Models\User $user, int $perPage = 15)
+ */
+class GetAllDocumentsAction
+{
+}
+/**
  * @method static \Lorisleiva\Actions\Decorators\JobDecorator|\Lorisleiva\Actions\Decorators\UniqueJobDecorator makeJob(int $id, \App\Models\User $user)
  * @method static \Lorisleiva\Actions\Decorators\UniqueJobDecorator makeUniqueJob(int $id, \App\Models\User $user)
  * @method static \Illuminate\Foundation\Bus\PendingDispatch dispatch(int $id, \App\Models\User $user)
@@ -172,6 +186,20 @@ class GetFolderByIdAction
  * @method static int run(int $parent_id)
  */
 class GetNewSequenceAction
+{
+}
+/**
+ * @method static \Lorisleiva\Actions\Decorators\JobDecorator|\Lorisleiva\Actions\Decorators\UniqueJobDecorator makeJob()
+ * @method static \Lorisleiva\Actions\Decorators\UniqueJobDecorator makeUniqueJob()
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch dispatch()
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchIf(bool $boolean)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchUnless(bool $boolean)
+ * @method static dispatchSync()
+ * @method static dispatchNow()
+ * @method static dispatchAfterResponse()
+ * @method static \Illuminate\Database\Eloquent\Collection run()
+ */
+class GetPrivateFoldersAction
 {
 }
 /**

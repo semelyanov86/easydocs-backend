@@ -13,6 +13,7 @@ final class GetDocumentByIdAction extends Action
 {
     public function handle(int $id, User $user): Document
     {
+        /** @var Document $document */
         $document = Document::with('folder')->findOrFail($id);
 
         abort_unless(CheckDocumentPermissionsAction::run($document, $user), Response::HTTP_FORBIDDEN, 'You do not have permissions to read document');

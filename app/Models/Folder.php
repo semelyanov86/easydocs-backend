@@ -34,6 +34,10 @@ final class Folder extends Model
         'is_private',
     ];
 
+    protected $casts = [
+        'is_private' => 'boolean',
+    ];
+
     /**
      * @return BelongsTo<Folder, Folder>
      */

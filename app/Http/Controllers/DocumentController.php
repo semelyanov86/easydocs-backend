@@ -6,15 +6,27 @@ namespace App\Http\Controllers;
 
 use App\Actions\Documents\CreateDocumentAction;
 use App\Actions\Documents\DeleteDocumentAction;
+use App\Actions\Documents\GetAllDocumentsAction;
 use App\Actions\Documents\GetDocumentByIdAction;
 use App\DTO\DocumentData;
+use App\Http\Requests\IndexDocumentsRequest;
 use App\Transformers\DocumentTransformer;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use Symfony\Component\HttpFoundation\Response;
 
 final class DocumentController extends Controller
 {
+    public function index(IndexDocumentsRequest $request, GetAllDocumentsAction $action): JsonResponse
+    {
+        $user = $request->user();
+        abort_if(! $user, 403, 'No user found');
+        $documents = $action->handle($user, $request->integer('size'));
+
+        return fractal()->collection($documents, new DocumentTransformer())->paginateWith(new IlluminatePaginatorAdapter($documents))->respond();
+    }
+
     public function store(Request $request, DocumentData $data, CreateDocumentAction $action): JsonResponse
     {
         $user = $request->user();

@@ -31,6 +31,7 @@ final class DocumentTransformer extends TransformerAbstract
             'state_color' => $document->state->color(),
             'folder_id' => $document->folder_id,
             'public_link' => $document->public_link,
+            'is_private' => $document->is_private,
             'version' => (int) $document->version,
             'created_at' => $document->created_at,
             'updated_at' => $document->updated_at,

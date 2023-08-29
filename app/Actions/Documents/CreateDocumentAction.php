@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Actions\Documents;
 
 use App\Actions\Files\AssociateFileWithModelAction;
+use App\Actions\Folders\GetFolderByIdAction;
 use App\DTO\DocumentData;
 use App\Models\Document;
+use App\Models\User;
 use App\States\Created;
 use Lorisleiva\Actions\Action;
 
@@ -24,6 +26,10 @@ final class CreateDocumentAction extends Action
             }
         }
         $data->state = Created::class;
+        $userModel = User::findOrFail($data->user_id);
+
+        $folder = GetFolderByIdAction::run($data->folder_id, $userModel);
+        $data->is_private = $folder->is_private;
 
         $document = Document::create($data->toArray());
 

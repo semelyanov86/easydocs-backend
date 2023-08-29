@@ -32,6 +32,7 @@ final class DocumentData extends Data
         #[Min(3)]
         public string $fileName,
         public int $version = 1,
+        public bool $is_private = false,
     ) {
     }
 }
