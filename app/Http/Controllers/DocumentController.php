@@ -8,6 +8,7 @@ use App\Actions\Documents\CreateDocumentAction;
 use App\Actions\Documents\DeleteDocumentAction;
 use App\Actions\Documents\GetAllDocumentsAction;
 use App\Actions\Documents\GetDocumentByIdAction;
+use App\Actions\Documents\UpdateDocumentAction;
 use App\DTO\DocumentData;
 use App\Http\Requests\IndexDocumentsRequest;
 use App\Transformers\DocumentTransformer;
@@ -37,6 +38,19 @@ final class DocumentController extends Controller
         $document = $action->handle($data);
 
         return fractal($document, new DocumentTransformer())->respond(Response::HTTP_CREATED);
+    }
+
+    public function update(Request $request, int $id, DocumentData $data, UpdateDocumentAction $action): JsonResponse
+    {
+        $user = $request->user();
+        abort_if(! $user, 403, 'No user found');
+        $data->id = $id;
+        $data->user_id = $user->id;
+        $data->group_id = $user->group_id;
+
+        $document = $action->handle($data, $user);
+
+        return fractal($document, new DocumentTransformer())->respond(Response::HTTP_ACCEPTED);
     }
 
     public function show(Request $request, int $id, GetDocumentByIdAction $action): JsonResponse

@@ -28,9 +28,9 @@ final class DocumentData extends Data
         public ?int $seedms_id,
         public ?string $public_link,
         #[Min(20)]
-        public string $file,
+        public ?string $file,
         #[Min(3)]
-        public string $fileName,
+        public ?string $fileName,
         public int $version = 1,
         public bool $is_private = false,
         /** @var string[] */

@@ -16,15 +16,10 @@ final class CreateDocumentAction extends Action
 {
     public function handle(DocumentData $data): Document
     {
-        if (! $data->sequence) {
-            /** @var ?Document $latestDocument */
-            $latestDocument = Document::latest('sequence')->first();
-            if (! $latestDocument) {
-                $data->sequence = 1;
-            } else {
-                $data->sequence = $latestDocument->sequence + 1;
-            }
+        if (! $data->fileName || ! $data->file) {
+            abort(422, 'File name and File fields is required for this operation');
         }
+
         $data->state = Created::class;
         $userModel = User::findOrFail($data->user_id);
 

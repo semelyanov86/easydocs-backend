@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Builders\DocumentBuilder;
 use App\States\DocumentState;
+use HighSolutions\EloquentSequence\Sequence;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,7 +21,7 @@ use Spatie\Tags\HasTags;
 
 final class Document extends Model implements HasMedia
 {
-    use SoftDeletes, HasFactory, HasStates, InteractsWithMedia, LogsActivity, HasTags;
+    use SoftDeletes, HasFactory, HasStates, InteractsWithMedia, LogsActivity, HasTags, Sequence;
 
     public const COLLECTION_NAME = 'Documents';
 
@@ -82,5 +83,16 @@ final class Document extends Model implements HasMedia
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()->logAll();
+    }
+
+    /**
+     * @return string[]
+     */
+    public function sequence(): array
+    {
+        return [
+            'group' => 'folder_id',
+            'fieldName' => 'sequence',
+        ];
     }
 }

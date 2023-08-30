@@ -3,6 +3,20 @@
 namespace App\Actions\Documents;
 
 /**
+ * @method static \Lorisleiva\Actions\Decorators\JobDecorator|\Lorisleiva\Actions\Decorators\UniqueJobDecorator makeJob(\App\DTO\FolderData $folderData)
+ * @method static \Lorisleiva\Actions\Decorators\UniqueJobDecorator makeUniqueJob(\App\DTO\FolderData $folderData)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch dispatch(\App\DTO\FolderData $folderData)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchIf(bool $boolean, \App\DTO\FolderData $folderData)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchUnless(bool $boolean, \App\DTO\FolderData $folderData)
+ * @method static dispatchSync(\App\DTO\FolderData $folderData)
+ * @method static dispatchNow(\App\DTO\FolderData $folderData)
+ * @method static dispatchAfterResponse(\App\DTO\FolderData $folderData)
+ * @method static void run(\App\DTO\FolderData $folderData)
+ */
+class ChangeDocsVisibilityAction
+{
+}
+/**
  * @method static \Lorisleiva\Actions\Decorators\JobDecorator|\Lorisleiva\Actions\Decorators\UniqueJobDecorator makeJob(\App\Models\Document $document, \App\Models\User $user)
  * @method static \Lorisleiva\Actions\Decorators\UniqueJobDecorator makeUniqueJob(\App\Models\Document $document, \App\Models\User $user)
  * @method static \Illuminate\Foundation\Bus\PendingDispatch dispatch(\App\Models\Document $document, \App\Models\User $user)
@@ -70,6 +84,20 @@ class GetAllDocumentsAction
  * @method static \App\Models\Document run(int $id, \App\Models\User $user)
  */
 class GetDocumentByIdAction
+{
+}
+/**
+ * @method static \Lorisleiva\Actions\Decorators\JobDecorator|\Lorisleiva\Actions\Decorators\UniqueJobDecorator makeJob(\App\DTO\DocumentData $data, \App\Models\User $user)
+ * @method static \Lorisleiva\Actions\Decorators\UniqueJobDecorator makeUniqueJob(\App\DTO\DocumentData $data, \App\Models\User $user)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch dispatch(\App\DTO\DocumentData $data, \App\Models\User $user)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchIf(bool $boolean, \App\DTO\DocumentData $data, \App\Models\User $user)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchUnless(bool $boolean, \App\DTO\DocumentData $data, \App\Models\User $user)
+ * @method static dispatchSync(\App\DTO\DocumentData $data, \App\Models\User $user)
+ * @method static dispatchNow(\App\DTO\DocumentData $data, \App\Models\User $user)
+ * @method static dispatchAfterResponse(\App\DTO\DocumentData $data, \App\Models\User $user)
+ * @method static \App\Models\Document run(\App\DTO\DocumentData $data, \App\Models\User $user)
+ */
+class UpdateDocumentAction
 {
 }
 namespace App\Actions\Files;
