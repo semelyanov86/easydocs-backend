@@ -1,12 +1,18 @@
 _id: req_b9b4c47180344128b6721c7dd0011be2
 type: Request
 parentId: fld_cf585742259342298216cd62cf13c4db
-modified: 1693328777066
+modified: 1693375434971
 created: 1693317409510
 url: "{{ _.base_url }}/documents"
 name: Get All Documents
 description: >-
   Allows to get list of all documents with pagination.
+
+  Support following GET params:
+
+  * `page` - for passing page number
+
+  * `size` - for passing number of items per page
 
 
   Example response:
@@ -25,10 +31,13 @@ description: >-
   			"state_color": "brown",
   			"folder_id": 1,
   			"public_link": null,
-  			"is_private": 0,
+  			"is_private": false,
   			"version": 1,
   			"created_at": "2023-08-29T05:44:16.000000Z",
   			"updated_at": "2023-08-29T05:44:16.000000Z",
+  			"tags": {
+  				"data": []
+  			},
   			"media": {
   				"data": [
   					{
@@ -49,8 +58,71 @@ description: >-
   					}
   				]
   			}
+  		},
+  		{
+  			"id": 2,
+  			"name": "Second New Document",
+  			"description": "Some second description for document",
+  			"date_valid": "2023-12-09",
+  			"sequence": 2,
+  			"state": "Created",
+  			"state_color": "brown",
+  			"folder_id": 1,
+  			"public_link": null,
+  			"is_private": false,
+  			"version": 1,
+  			"created_at": "2023-08-30T05:45:17.000000Z",
+  			"updated_at": "2023-08-30T05:45:17.000000Z",
+  			"tags": {
+  				"data": [
+  					{
+  						"id": 1,
+  						"name": "test1",
+  						"slug": "test1",
+  						"created_at": "2023-08-30T05:45:17.000000Z",
+  						"updated_at": "2023-08-30T05:45:17.000000Z"
+  					},
+  					{
+  						"id": 2,
+  						"name": "test2",
+  						"slug": "test2",
+  						"created_at": "2023-08-30T05:45:17.000000Z",
+  						"updated_at": "2023-08-30T05:45:17.000000Z"
+  					}
+  				]
+  			},
+  			"media": {
+  				"data": [
+  					{
+  						"uuid": "334b8cfa-3a05-4b8e-88fb-7a92823b26b8",
+  						"type": "image",
+  						"extension": "png",
+  						"humanReadableSize": "108.73 KB",
+  						"originalUrl": "http:\/\/easydocs.test:8000\/storage\/2\/pass-1.png",
+  						"id": 2,
+  						"name": "media-libraryKf2FME",
+  						"file_name": "pass-1.png",
+  						"mime_type": "image\/png",
+  						"size": 111336,
+  						"version": 1,
+  						"order_column": 1,
+  						"created_at": "2023-08-30T05:45:18.000000Z",
+  						"updated_at": "2023-08-30T05:45:18.000000Z"
+  					}
+  				]
+  			}
   		}
-  	]
+  	],
+  	"meta": {
+  		"pagination": {
+  			"total": 2,
+  			"count": 2,
+  			"per_page": 5,
+  			"current_page": 1,
+  			"total_pages": 1,
+  			"links": {}
+  		}
+  	}
   }
 
   ```
