@@ -31,7 +31,9 @@ final class CreateDocumentAction extends Action
         $folder = GetFolderByIdAction::run($data->folder_id, $userModel);
         $data->is_private = $folder->is_private;
 
+        /** @var Document $document */
         $document = Document::create($data->toArray());
+        $document->attachTags($data->tags);
 
         return AssociateFileWithModelAction::run(
             content: $data->file,

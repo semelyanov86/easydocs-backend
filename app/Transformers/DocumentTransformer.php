@@ -11,10 +11,10 @@ use League\Fractal\TransformerAbstract;
 final class DocumentTransformer extends TransformerAbstract
 {
     /** @var string[] */
-    protected array $defaultIncludes = ['media'];
+    protected array $defaultIncludes = ['media', 'tags'];
 
     /** @var string[] */
-    protected array $availableIncludes = ['folder', 'group', 'user', 'media'];
+    protected array $availableIncludes = ['folder', 'group', 'user', 'media', 'tags'];
 
     /**
      * @return array<string, int|string>
@@ -35,6 +35,7 @@ final class DocumentTransformer extends TransformerAbstract
             'version' => (int) $document->version,
             'created_at' => $document->created_at,
             'updated_at' => $document->updated_at,
+            'tags' => $document->tags,
         ];
     }
 
@@ -56,5 +57,10 @@ final class DocumentTransformer extends TransformerAbstract
     public function includeMedia(Document $document): \League\Fractal\Resource\Collection
     {
         return $this->collection($document->getMedia(Document::COLLECTION_NAME), new MediaTransformer());
+    }
+
+    public function includeTags(Document $document): \League\Fractal\Resource\Collection
+    {
+        return $this->collection($document->tags, new TagsTransformer());
     }
 }

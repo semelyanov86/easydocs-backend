@@ -11,13 +11,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\ModelStates\HasStates;
+use Spatie\Tags\HasTags;
 
 final class Document extends Model implements HasMedia
 {
-    use SoftDeletes, HasFactory, HasStates, InteractsWithMedia;
+    use SoftDeletes, HasFactory, HasStates, InteractsWithMedia, LogsActivity, HasTags;
 
     public const COLLECTION_NAME = 'Documents';
 
@@ -74,5 +77,10 @@ final class Document extends Model implements HasMedia
     public function newEloquentBuilder($query): DocumentBuilder
     {
         return new DocumentBuilder($query);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()->logAll();
     }
 }

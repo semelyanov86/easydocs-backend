@@ -33,6 +33,8 @@ final class DocumentData extends Data
         public string $fileName,
         public int $version = 1,
         public bool $is_private = false,
+        /** @var string[] */
+        public array $tags = []
     ) {
     }
 }
