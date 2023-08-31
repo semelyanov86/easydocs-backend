@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->prefix('/v1')->group(function () {
     Route::post('/documents', [\App\Http\Controllers\DocumentController::class, 'store'])->name('document.store');
     Route::get('/documents/{id}', [\App\Http\Controllers\DocumentController::class, 'show'])->name('document.show');
     Route::put('/documents/{id}', [\App\Http\Controllers\DocumentController::class, 'update'])->name('document.update');
+    Route::patch('/documents/{id}', [\App\Http\Controllers\DocumentController::class, 'updateSequence'])->name('document.update-sequence');
     Route::delete('/documents/{id}', [\App\Http\Controllers\DocumentController::class, 'destroy'])->name('document.destroy');
 
     Route::get('/groups', [\App\Http\Controllers\GroupController::class, 'index'])->name('group.index');

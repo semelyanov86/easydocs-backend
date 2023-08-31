@@ -221,4 +221,43 @@ final class DocumentsApiTest extends TestCase
         $response->assertJsonCount(3, 'data');
         $response->assertSee('\/api\/v1\/documents?page=4');
     }
+
+    public function testChangeSequenceEndpoint(): void
+    {
+        $user = $this->generateUser();
+
+        Sanctum::actingAs(
+            $user,
+            ['view-documents']
+        );
+
+        $folder = $this->generateParentFolder($user);
+        $documents = Document::factory()->count(3)->sequence([
+            'folder_id' => $folder->id,
+            'sequence' => 1,
+            'user_id' => $user->id,
+            'group_id' => $user->group_id,
+        ], [
+            'folder_id' => $folder->id,
+            'sequence' => 2,
+            'user_id' => $user->id,
+            'group_id' => $user->group_id,
+        ], [
+            'folder_id' => $folder->id,
+            'sequence' => 3,
+            'user_id' => $user->id,
+            'group_id' => $user->group_id,
+        ])->create();
+        $response = $this->patchJson(route('document.update-sequence', ['id' => $documents[2]?->id]), ['sequence' => 1]);
+        $response->assertStatus(Response::HTTP_ACCEPTED);
+        $response->assertJsonFragment([
+            'id' => $documents[2]?->id,
+            'sequence' => 2,
+        ]);
+        $response = $this->getJson(route('document.show', $documents[1]->id));
+        $response->assertJsonFragment([
+            'id' => $documents[1]?->id,
+            'sequence' => 3,
+        ]);
+    }
 }

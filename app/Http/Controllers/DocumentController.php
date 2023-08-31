@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Actions\Documents\ChangeDocumentSequenceAction;
 use App\Actions\Documents\CreateDocumentAction;
 use App\Actions\Documents\DeleteDocumentAction;
 use App\Actions\Documents\GetAllDocumentsAction;
@@ -11,6 +12,7 @@ use App\Actions\Documents\GetDocumentByIdAction;
 use App\Actions\Documents\UpdateDocumentAction;
 use App\DTO\DocumentData;
 use App\Http\Requests\IndexDocumentsRequest;
+use App\Http\Requests\PartlyUpdateDocumentRequest;
 use App\Transformers\DocumentTransformer;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -49,6 +51,17 @@ final class DocumentController extends Controller
         $data->group_id = $user->group_id;
 
         $document = $action->handle($data, $user);
+
+        return fractal($document, new DocumentTransformer())->respond(Response::HTTP_ACCEPTED);
+    }
+
+    public function updateSequence(PartlyUpdateDocumentRequest $request, int $id, ChangeDocumentSequenceAction $action): JsonResponse
+    {
+        $user = $request->user();
+        if (! $user) {
+            abort(403, 'No user found');
+        }
+        $document = $action->handle($id, $request->integer('sequence'), $user);
 
         return fractal($document, new DocumentTransformer())->respond(Response::HTTP_ACCEPTED);
     }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use App\Models\Document;
+use App\States\Created;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
@@ -22,7 +23,7 @@ final class DocumentFactory extends Factory
             'user_id' => $this->faker->randomNumber(),
             'group_id' => $this->faker->randomNumber(),
             'sequence' => $this->faker->randomNumber(),
-            'state' => $this->faker->word(),
+            'state' => Created::class,
             'seedms_id' => $this->faker->randomNumber(),
             'public_link' => $this->faker->word(),
             'version' => $this->faker->randomNumber(),
