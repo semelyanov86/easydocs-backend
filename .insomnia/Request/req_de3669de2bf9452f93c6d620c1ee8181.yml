@@ -1,18 +1,13 @@
-_id: req_b9b4c47180344128b6721c7dd0011be2
+_id: req_de3669de2bf9452f93c6d620c1ee8181
 type: Request
 parentId: fld_cf585742259342298216cd62cf13c4db
-modified: 1693472877923
-created: 1693317409510
-url: "{{ _.base_url }}/documents"
-name: Get All Documents
+modified: 1693474031907
+created: 1693472659546
+url: "{{ _.base_url }}/folders/1/documents"
+name: Documents from Folder
 description: >-
-  Allows to get list of all documents with pagination.
-
-  Support following GET params:
-
-  * `page` - for passing page number
-
-  * `size` - for passing number of items per page
+  Get all documents from specific folder. Returns all documents without
+  pagination
 
 
   Example response:
@@ -23,8 +18,8 @@ description: >-
   	"data": [
   		{
   			"id": 1,
-  			"name": "New Document",
-  			"description": "Some description for document",
+  			"name": "First New Document",
+  			"description": "Some first description for document",
   			"date_valid": "2023-08-09",
   			"sequence": 1,
   			"state": "Created",
@@ -32,11 +27,26 @@ description: >-
   			"folder_id": 1,
   			"public_link": null,
   			"is_private": false,
-  			"version": 1,
+  			"version": 2,
   			"created_at": "2023-08-29T05:44:16.000000Z",
-  			"updated_at": "2023-08-29T05:44:16.000000Z",
+  			"updated_at": "2023-08-30T13:57:46.000000Z",
   			"tags": {
-  				"data": []
+  				"data": [
+  					{
+  						"id": 1,
+  						"name": "test1",
+  						"slug": "test1",
+  						"created_at": "2023-08-30T05:45:17.000000Z",
+  						"updated_at": "2023-08-30T05:45:17.000000Z"
+  					},
+  					{
+  						"id": 2,
+  						"name": "test2",
+  						"slug": "test2",
+  						"created_at": "2023-08-30T05:45:17.000000Z",
+  						"updated_at": "2023-08-30T05:45:17.000000Z"
+  					}
+  				]
   			},
   			"media": {
   				"data": [
@@ -55,6 +65,68 @@ description: >-
   						"order_column": 1,
   						"created_at": "2023-08-29T05:44:16.000000Z",
   						"updated_at": "2023-08-29T05:44:16.000000Z"
+  					},
+  					{
+  						"uuid": "4b482256-6cee-4d66-9622-92a9c8c11165",
+  						"type": "image",
+  						"extension": "png",
+  						"humanReadableSize": "965 B",
+  						"originalUrl": "http:\/\/easydocs.test:8000\/storage\/4\/passScan-2.png",
+  						"id": 4,
+  						"name": "media-libraryfuYMs2",
+  						"file_name": "passScan-2.png",
+  						"mime_type": "image\/png",
+  						"size": 965,
+  						"version": 2,
+  						"order_column": 2,
+  						"created_at": "2023-08-30T13:57:46.000000Z",
+  						"updated_at": "2023-08-30T13:57:46.000000Z"
+  					}
+  				]
+  			}
+  		},
+  		{
+  			"id": 3,
+  			"name": "Third New Document",
+  			"description": "Third document",
+  			"date_valid": "2023-11-11",
+  			"sequence": 2,
+  			"state": "Created",
+  			"state_color": "brown",
+  			"folder_id": 1,
+  			"public_link": null,
+  			"is_private": false,
+  			"version": 1,
+  			"created_at": "2023-08-30T13:54:38.000000Z",
+  			"updated_at": "2023-08-31T05:57:11.000000Z",
+  			"tags": {
+  				"data": [
+  					{
+  						"id": 2,
+  						"name": "test2",
+  						"slug": "test2",
+  						"created_at": "2023-08-30T05:45:17.000000Z",
+  						"updated_at": "2023-08-30T05:45:17.000000Z"
+  					}
+  				]
+  			},
+  			"media": {
+  				"data": [
+  					{
+  						"uuid": "51c48c75-e03a-4b74-b6b4-e4b69fb1a74f",
+  						"type": "image",
+  						"extension": "png",
+  						"humanReadableSize": "108.73 KB",
+  						"originalUrl": "http:\/\/easydocs.test:8000\/storage\/3\/pass3-1.png",
+  						"id": 3,
+  						"name": "media-libraryN12eeX",
+  						"file_name": "pass3-1.png",
+  						"mime_type": "image\/png",
+  						"size": 111336,
+  						"version": 1,
+  						"order_column": 1,
+  						"created_at": "2023-08-30T13:54:38.000000Z",
+  						"updated_at": "2023-08-30T13:54:38.000000Z"
   					}
   				]
   			}
@@ -64,7 +136,7 @@ description: >-
   			"name": "Second New Document",
   			"description": "Some second description for document",
   			"date_valid": "2023-12-09",
-  			"sequence": 2,
+  			"sequence": 3,
   			"state": "Created",
   			"state_color": "brown",
   			"folder_id": 1,
@@ -72,7 +144,7 @@ description: >-
   			"is_private": false,
   			"version": 1,
   			"created_at": "2023-08-30T05:45:17.000000Z",
-  			"updated_at": "2023-08-30T05:45:17.000000Z",
+  			"updated_at": "2023-08-31T05:57:11.000000Z",
   			"tags": {
   				"data": [
   					{
@@ -112,46 +184,26 @@ description: >-
   				]
   			}
   		}
-  	],
-  	"meta": {
-  		"pagination": {
-  			"total": 2,
-  			"count": 2,
-  			"per_page": 5,
-  			"current_page": 1,
-  			"total_pages": 1,
-  			"links": {}
-  		}
-  	}
+  	]
   }
 
   ```
 method: GET
 body: {}
-parameters:
-  - id: pair_4b19365dfdf5453387ed37e5ba704976
-    name: page
-    value: "1"
-    description: ""
-    disabled: false
-  - id: pair_4dd893d705bb4417ad75f1c01b255c59
-    name: size
-    value: "5"
-    description: ""
-    disabled: false
+parameters: []
 headers:
-  - id: pair_8b4148a1d43b4e048c70595e5bb5ca4e
+  - id: pair_3135824720b1411c9784c35e054445a4
     name: Accept
     value: application/json
     description: ""
-  - id: pair_c583c6f891a44e699610d97676af9f3b
+  - id: pair_926fec117b114622837e37a0fb7eaaa0
     name: Content-Type
     value: application/json
     description: ""
 authentication:
   type: bearer
   token: "{{ _.bearerToken }}"
-metaSortKey: -1693317409510
+metaSortKey: -1693472659546
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

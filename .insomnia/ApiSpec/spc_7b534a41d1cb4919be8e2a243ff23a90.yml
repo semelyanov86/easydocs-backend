@@ -1,7 +1,7 @@
 _id: spc_7b534a41d1cb4919be8e2a243ff23a90
 type: ApiSpec
 parentId: wrk_44747ddeeadc4bb494f6c1061f8f94e1
-modified: 1693461294355
+modified: 1693472642499
 created: 1692631095783
 fileName: EasyDocs
 contents: >-
@@ -235,6 +235,39 @@ contents: >-
                       type: array
                       items:
                         $ref: "#/components/schemas/FolderActivities"
+    /folders/{folderId}/documents:
+      get:
+        tags:
+          - document
+        summary: Get documents from folder
+        description: Allows you to get all documents from specific folder
+        operationId: getFolderDocuments
+        security:
+          - bearerAuth: []
+        parameters:
+          - name: folderId
+            in: path
+            description: Folder id to get documents
+            required: true
+            schema:
+              type: integer
+              format: int64
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: "#/components/schemas/Document"
+          "404":
+            description: Folder Not Found
+          "403":
+            description: You are not allowed to view folder
     /documents:
       get:
         tags:
