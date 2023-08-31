@@ -189,6 +189,74 @@ final class DocumentsApiTest extends TestCase
         ]);
     }
 
+    public function testGetDocumentsFromFolder(): void
+    {
+        $user = $this->generateUser();
+
+        Sanctum::actingAs(
+            $user,
+            ['view-documents']
+        );
+
+        $folder = $this->generateParentFolder($user);
+        /** @var Document $document1 */
+        $document1 = Document::factory()->createOne([
+            'folder_id' => $folder->id,
+            'user_id' => $user->id,
+            'group_id' => $user->group_id,
+            'state' => Created::class,
+            'sequence' => 2,
+        ]);
+
+        /** @var Document $document2 */
+        $document2 = Document::factory()->createOne([
+            'folder_id' => $folder->id,
+            'user_id' => $user->id,
+            'group_id' => $user->group_id,
+            'state' => Created::class,
+            'sequence' => 1,
+        ]);
+
+        $response = $this->getJson(route('folders.documents', $folder->id));
+        $response->assertStatus(Response::HTTP_OK);
+        $response->assertJson([
+            'data' => [
+                [
+                    'id' => $document2->id,
+                    'name' => $document2->name,
+                    'description' => $document2->description,
+                    'date_valid' => $document2->date_valid?->format('Y-m-d'),
+                    'sequence' => $document2->sequence,
+                    'state' => $document2->state->name(),
+                    'state_color' => $document2->state->color(),
+                    'folder_id' => $document2->folder_id,
+                    'public_link' => $document2->public_link,
+                    'version' => $document2->version,
+                    'tags' => ['data' => []],
+                    'media' => [
+                        'data' => [],
+                    ],
+                ],
+                [
+                    'id' => $document1->id,
+                    'name' => $document1->name,
+                    'description' => $document1->description,
+                    'date_valid' => $document1->date_valid?->format('Y-m-d'),
+                    'sequence' => $document1->sequence,
+                    'state' => $document1->state->name(),
+                    'state_color' => $document1->state->color(),
+                    'folder_id' => $document1->folder_id,
+                    'public_link' => $document1->public_link,
+                    'version' => $document1->version,
+                    'tags' => ['data' => []],
+                    'media' => [
+                        'data' => [],
+                    ],
+                ],
+            ],
+        ]);
+    }
+
     public function testPaginationLinks(): void
     {
         $user = $this->generateUser();

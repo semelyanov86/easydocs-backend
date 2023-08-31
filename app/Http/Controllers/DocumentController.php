@@ -9,6 +9,7 @@ use App\Actions\Documents\CreateDocumentAction;
 use App\Actions\Documents\DeleteDocumentAction;
 use App\Actions\Documents\GetAllDocumentsAction;
 use App\Actions\Documents\GetDocumentByIdAction;
+use App\Actions\Documents\GetDocumentsFromFolderAction;
 use App\Actions\Documents\UpdateDocumentAction;
 use App\DTO\DocumentData;
 use App\Http\Requests\IndexDocumentsRequest;
@@ -28,6 +29,15 @@ final class DocumentController extends Controller
         $documents = $action->handle($user, $request->integer('size'));
 
         return fractal()->collection($documents, new DocumentTransformer())->paginateWith(new IlluminatePaginatorAdapter($documents))->respond();
+    }
+
+    public function indexFromFolder(IndexDocumentsRequest $request, int $folderId, GetDocumentsFromFolderAction $action): JsonResponse
+    {
+        $user = $request->user();
+        abort_if(! $user, 403, 'No user found');
+        $documents = $action->handle($folderId, $user);
+
+        return fractal()->collection($documents, new DocumentTransformer())->respond();
     }
 
     public function store(Request $request, DocumentData $data, CreateDocumentAction $action): JsonResponse

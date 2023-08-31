@@ -17,6 +17,20 @@ class ChangeDocsVisibilityAction
 {
 }
 /**
+ * @method static \Lorisleiva\Actions\Decorators\JobDecorator|\Lorisleiva\Actions\Decorators\UniqueJobDecorator makeJob(int $id, int $sequence, \App\Models\User $user)
+ * @method static \Lorisleiva\Actions\Decorators\UniqueJobDecorator makeUniqueJob(int $id, int $sequence, \App\Models\User $user)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch dispatch(int $id, int $sequence, \App\Models\User $user)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchIf(bool $boolean, int $id, int $sequence, \App\Models\User $user)
+ * @method static \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent dispatchUnless(bool $boolean, int $id, int $sequence, \App\Models\User $user)
+ * @method static dispatchSync(int $id, int $sequence, \App\Models\User $user)
+ * @method static dispatchNow(int $id, int $sequence, \App\Models\User $user)
+ * @method static dispatchAfterResponse(int $id, int $sequence, \App\Models\User $user)
+ * @method static \App\Models\Document run(int $id, int $sequence, \App\Models\User $user)
+ */
+class ChangeDocumentSequenceAction
+{
+}
+/**
  * @method static \Lorisleiva\Actions\Decorators\JobDecorator|\Lorisleiva\Actions\Decorators\UniqueJobDecorator makeJob(\App\Models\Document $document, \App\Models\User $user)
  * @method static \Lorisleiva\Actions\Decorators\UniqueJobDecorator makeUniqueJob(\App\Models\Document $document, \App\Models\User $user)
  * @method static \Illuminate\Foundation\Bus\PendingDispatch dispatch(\App\Models\Document $document, \App\Models\User $user)

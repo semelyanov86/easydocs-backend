@@ -13,6 +13,6 @@ final class GetAllDocumentsAction extends Action
 {
     public function handle(User $user, int $perPage = 15): LengthAwarePaginator
     {
-        return Document::with('folder')->whereOwnedToUser($user)->paginate($perPage);
+        return Document::with('folder')->whereOwnedToUser($user)->latest()->paginate($perPage);
     }
 }
