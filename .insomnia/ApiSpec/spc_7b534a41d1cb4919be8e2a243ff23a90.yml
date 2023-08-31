@@ -1,7 +1,7 @@
 _id: spc_7b534a41d1cb4919be8e2a243ff23a90
 type: ApiSpec
 parentId: wrk_44747ddeeadc4bb494f6c1061f8f94e1
-modified: 1693376019013
+modified: 1693461294355
 created: 1692631095783
 fileName: EasyDocs
 contents: >-
@@ -331,6 +331,44 @@ contents: >-
             application/json:
                 schema:
                   $ref: "#/components/schemas/Document"
+        responses:
+          "201":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    data:
+                      $ref: "#/components/schemas/Document"
+          "422":
+            description: Invalid input
+      patch:
+        tags:
+          - document
+        summary: Change Document Sequence
+        description: "Pass new sequence value to document. Useful for drag and drop feature"
+        operationId: updateDocumentSequence
+        security:
+          - bearerAuth: []
+        parameters:
+          - name: documentId
+            in: path
+            description: ID of document that needs to be updated
+            required: true
+            schema:
+              type: integer
+              format: int64
+        requestBody:
+          content:
+            application/json:
+                schema:
+                  type: object
+                  properties:
+                    sequence:
+                      type: number
+                      format: int64
+                      example: 3
         responses:
           "201":
             description: successful operation

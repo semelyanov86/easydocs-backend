@@ -1,0 +1,31 @@
+_id: req_188b76b0e354408f88a08f727afbbf69
+type: Request
+parentId: fld_cf585742259342298216cd62cf13c4db
+modified: 1693461326502
+created: 1693460349895
+url: "{{ _.base_url }}/documents/2"
+name: Delete Document
+description: ""
+method: DELETE
+body: {}
+parameters: []
+headers:
+  - id: pair_fc495c377ebc454b91eb96c4d98369e7
+    name: Accept
+    value: application/json
+    description: ""
+  - id: pair_af68053f702c4161a28fba948526bf04
+    name: Content-Type
+    value: application/json
+    description: ""
+authentication:
+  type: bearer
+  token: "{{ _.bearerToken }}"
+metaSortKey: -1693460349895
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

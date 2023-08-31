@@ -1,0 +1,47 @@
+_id: req_dc882103da7a4b7fae7261b582bc4b68
+type: Request
+parentId: fld_cf585742259342298216cd62cf13c4db
+modified: 1693461423898
+created: 1693461332645
+url: "{{ _.base_url }}/documents/2"
+name: Change Sequence
+description: >-
+  Update sequence value in specific document. Useful for drag and drop feature.
+  Example request:
+
+
+  ```json
+
+  {
+  	"sequence": 3
+  }
+
+  ```
+method: PATCH
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"sequence": 3
+    }
+parameters: []
+headers:
+  - id: pair_61efd81588ec4788a03ab8b23c8facb9
+    name: Accept
+    value: application/json
+    description: ""
+  - id: pair_84fee7335332445a898e067e9a706658
+    name: Content-Type
+    value: application/json
+    description: ""
+authentication:
+  type: bearer
+  token: "{{ _.bearerToken }}"
+metaSortKey: -1693461332645
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
